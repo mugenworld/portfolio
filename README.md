@@ -1,65 +1,73 @@
-# Eito Kikugawa — Projects & Experiments
+# Eito Kikugawa — AI-assisted Product & Operations Experiments
 
-## 概要
+生成AIを使いながら、個人でプロダクト企画・開発・検証と、AIを使った開発運用の仕組みづくりを続けています。
 
-生成AIを活用しながら、個人でWebプロダクトの企画と開発を続けてきました。Claude Code、Codex、v0、Gensparkなどを開発に取り入れ、課題設定、コンセプト、要件整理、UI/UX、優先順位、動作検証、方向転換や採否の判断を自分で行いながら、アイデアを実際に動く形まで試作してきました。
+専門エンジニアとしてすべてのコードを自力で書くことよりも、**課題を整理し、要件を決め、AIに実装させ、結果を検証し、必要なら方向を変えること**を重視しています。
 
-コード実装には生成AIを大きく活用しており、専門エンジニアとしてすべてを自力で実装したものではありません。
+> **Problem → Structure → Build → Verify → Learn → Change**
 
-## About
+現在は、次の2つを中心に取り組んでいます。
 
-I use generative AI to turn product ideas into working web prototypes. My background is not traditional software engineering, and I do not claim to have written every line of code. I focus on problem framing, concepts, requirements, product direction, UI/UX decisions, validation, and deciding what to change or reject.
+## Featured Work
 
-> **Problem → Idea → Build → Test → Learn → Change**
+### [ZOS — Life Game OS](projects/zos.md)
 
-## Projects
+人生の方向、現実の行動、振り返りをつなぐ「Life Game OS」の実験です。
 
-### [ZOS — From Self-Observation Tool to Life Game OS](projects/zos.md)
+最初は自己観察ツールとして始まり、Mirror / Persona Mapなどの試作を経て、現在は **Vision / Quest / Mission / Action / Replay / Character** を中心とした構造へ発展しています。
 
-**May–August 2026.** A local-first self-observation experiment that evolved through Mirror, Persona Map, and repeated prototypes into a Life Game OS built around Vision, Quest, Action, Replay, and Character. The main branch contains a working MVP; later branches are treated as additional experiments.
+mainにはローカルで動くMVPがあり、後続の実験では会話型オンボーディング、AI Game Master、Vision Map、MCPを使った限定的なデータ連携などを検証しています。
 
-### [Infinity — Hip-Hop Platform and Auction Validation](projects/infinity-mugen.md)
+**自分の担当:** 問題設定、コンセプト、要件整理、優先順位、UI/UX判断、AIへの指示、実機検証、採否判断。
 
-**March–July 2026.** A hip-hop product combining discovery, Battle, creator identity, and beat auctions. Core Battle and Auction flows, including Stripe test mode, were checked end-to-end; later work narrowed the strategy from a broad SNS toward an auction-demand validation plan.
+---
 
-### [Noctis Auctions — Auction Prototype and Predecessor to Infinity](projects/noctis-auction.md)
+### [Claude Company OS — AI-native Operations Experiment](projects/claude-code-company.md)
 
-**February–March 2026.** A private beat-auction prototype with account, bidding, payment, delivery, and administration foundations. Its expansion into a broader cultural-platform concept exposed an unclear MVP boundary and led to the cleaner Infinity rebuild.
+Claude Codeを単なるコーディングツールではなく、**調査・計画・実装・検証・学習を分担する小さなAI組織として運用できるか**を検証している内部実験です。
 
-### [Claude Company OS — AI-Native Operations Experiment](projects/claude-code-company.md)
+GitHubを状態の記録場所にし、AIができる操作と人間が決める操作を分け、別コンテキストのAIによる検証、長時間作業の停止条件、Founderへの報告形式などを整備してきました。
 
-**August 2026.** An internal experiment for coordinating AI-assisted development, research, review, learning, and multiple projects through authority levels, decision records, quality criteria, and human approval. It is not presented as a secure autonomous-company platform.
+現在は、自分のプロダクト開発だけでなく、将来的に外部案件も同じ流れで扱えるかを試す段階に進んでいます。
 
-### [Early Auction UI Experiments](projects/other-experiments.md)
+**自分の担当:** 運用原則、権限境界、品質基準、Founder判断、Claude Codeへの依頼、結果のレビューと採否。
 
-**February 2026.** Related v0 and Genspark experiments used to test the visual language and information structure of a premium beat auction with mock data. They became the starting point for Noctis Auctions.
+## Earlier Product Experiments
 
-## How I Build with AI
+2026年前半には、生成AIを使いながら複数のWebプロダクトを試作しました。
+
+オークション / マーケットプレイス型のフロー、アカウント、入札、決済、管理画面などを含む試作を通して、**MVPの境界、決済を含むE2E検証、機能を増やしすぎる問題、需要検証の重要性**を学びました。
+
+これらは現在の重点プロジェクトではないため、このPortfolioでは個別の詳細ケーススタディとしては掲載していません。
+
+## How I Work with AI
 
 | My responsibility | AI assistance |
 |---|---|
-| Problem framing and concepts | Research and option generation |
-| Requirements and priorities | Implementation assistance and code generation |
-| Product direction and UI/UX decisions | Review assistance and issue discovery |
-| Browser and real-device validation | Documentation and test-plan drafting |
-| Final adoption, rejection, and scope changes | Fast iteration within the given constraints |
+| 問題設定・目的の整理 | 調査、比較、選択肢の生成 |
+| 要件・優先順位の決定 | 仕様化、実装案の作成 |
+| Product / UX判断 | コード生成、修正、レビュー支援 |
+| 実機・ブラウザでの確認 | テスト案、矛盾・漏れの検出 |
+| 最終的な採否判断 | ドキュメント化、反復作業 |
 
-AI helps me build beyond my current coding ability, but it does not decide what the product should be or whether the result is acceptable. I do not describe the work as either “built entirely by AI” or “implemented entirely by myself.”
+AIの出力をそのまま正解とは扱いません。可能な範囲で一次情報、実際のコード、テスト結果、GitHub上の状態を確認し、事実と推測を分けて判断することを意識しています。
 
-## Timeline
+## Tools / Experience
 
-| Period | Progression |
-|---|---|
-| Feb 2026 | Early Auction UI Experiments → Noctis Auctions |
-| Mar–Jul 2026 | Infinity rebuild, test flows, and scope reduction |
-| May–Aug 2026 | ZOS prototypes and Life Game OS MVP |
-| Aug 2026 | Claude Company OS operating experiment |
+- ChatGPT / Claude / Claude Code / Codex
+- GitHub / Pull Request / branch-based workflow
+- AI-assisted research, requirements, implementation and verification
+- HTML / CSS / JavaScript
+- Next.js / Supabase / Stripeを使った過去の試作経験
+- Product discovery / MVP scope / E2E validation
 
-## Currently Learning
+## Current Focus
 
-- Product discovery and hypothesis-driven validation
-- Web architecture, databases, authentication, and payment flows
-- Testing and evaluating AI-generated implementations
-- AI agents, harnesses, and human-in-the-loop operations
+- AIを使った開発・業務改善を、実案件でも再現できる形にする
+- ZOSを自分自身が日常で使えるプロダクトへ近づける
+- Claude Company OSを、実際の仕事を安全に処理できる運用へ育てる
+- AIが生成した成果物を評価・検証する力を高める
 
-This public repository contains written case studies only—not private source code, credentials, internal records, or copied project assets.
+---
+
+This public repository contains written case studies only. Private source code, credentials, customer data, and internal records are not published here.
