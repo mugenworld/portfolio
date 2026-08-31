@@ -1,65 +1,99 @@
-# Claude Company OS — AI-Native Operations Experiment
+# Claude Company OS — AI-native Operations Experiment
 
-## Summary
+## Overview
 
-**Period:** August 2026  
-**Summary:** A repository-based experiment for coordinating one person's AI-assisted development, research, review, learning, and multiple projects through explicit authority and human approval.
+**Period:** August 2026 — present  
+**Status:** Private internal experiment / active
+
+Claude Company OSは、Claude Codeを単なるコーディングツールではなく、**調査・計画・実装・検証・学習を分担する小さなAI組織として運用できるか**を検証しているプロジェクトです。
+
+目的は「AIを増やすこと」ではなく、AIが速く動くほど必要になる、**役割、権限、確認、記録、検証**をどう設計するかを学ぶことです。
 
 ## Problem
 
-Using AI across several projects created recurring problems: decisions disappeared between sessions, agents interpreted projects differently, and the ability to perform an action could be confused with permission to perform it. More automation could increase speed without increasing reliability.
+複数のAIセッションや複数プロジェクトを使うと、次の問題が起きました。
 
-The project asked how AI work could be organized without giving up human judgment and accountability.
+- 前回の判断が次のセッションへ正しく引き継がれない
+- AIごとに同じプロジェクトを違う前提で解釈する
+- 「できる操作」と「やってよい操作」が混ざる
+- 自動化すると速くなるが、間違いも高速化する
+- AI自身の「できました」という報告を、そのまま信用できない
 
-## What I Tried
+そこで、GitHubを状態と判断の記録場所として使い、人間とAIの責任を明確にする方向へ進みました。
 
-- Human and AI responsibility boundaries
-- Autonomy levels based on risk and reversibility
-- Approval points for external or irreversible actions
-- Decision records and project authority levels
-- Reusable skills and bounded agent roles
-- A learning flow that connects notes to adoption decisions
-- Best-effort safeguards and regression tests
-- A ZOS audit and E2E planning exercise without modifying the product
+## What Exists Now
 
-I defined the operating principles, authority model, approval boundaries, quality expectations, and adoption criteria. I directed Claude Code, inspected the results, and decided which forms of automation were appropriate.
+private repositoryでは、現在までに主に以下を整備しています。
 
-## What Was Built
+- Company charter / operating model
+- ProjectごとのAI authority
+- Architecture Decision Records
+- Founder approvalが必要な操作の整理
+- Development flow
+- Builderとは別コンテキストで成果物を確認するDevelopment Verifier
+- 実装前のFact Checkと、実装後のclaim verification
+- GitHub Issueを依頼の入口、Pull Requestを結果報告として使うFounder Interface
+- 長時間作業時のcheckpoint / stop condition
+- 学習素材をnote → adoption → implementationへつなぐAcademy flow
+- branch操作などの事故を減らすbest-effort safeguardとregression test
+- 外部通信やproduction境界をAIが判断するためのenvironment declaration
 
-The private repository includes:
+## How Work Flows
 
-- a company charter, operating model, and quality criteria;
-- autonomy levels, approval records, and Architecture Decision Records;
-- a project registry with permitted AI authority;
-- an Academy flow for distillation, adoption, and concrete follow-up;
-- reusable Claude Code skills and planner/distiller roles;
-- a best-effort hook intended to reduce common accidental branch operations;
-- regression tests for that hook;
-- a code-trace audit and E2E runbook for ZOS.
+基本的な流れはシンプルです。
 
-Later branch work explored a development-verification role and a small development board. These remain additional experiments.
+1. Founderが目的を渡す
+2. AIが現在のGitHub状態と関連する決定を確認する
+3. 作業内容を整理する
+4. feature branchで実装する
+5. テストする
+6. 別コンテキストのVerifierが主張と成果物を確認する
+7. Founderへ「何をした / 何が終わった / 何がまだ危険か」を返す
+8. mainへの最終反映など重要操作はFounderが判断する
 
-## AI / Tools
+「AIが全部勝手に進める」ことよりも、**安全に任せられる範囲を少しずつ広げる**ことを重視しています。
 
-**Tools:** Claude Code, Markdown, YAML, Python hooks, shell tests, custom skills and agents
+## Real Use
 
-Claude Code helped implement the repository, audit inconsistencies between policy and enforcement, create tests, and trace another project's code against acceptance scenarios. Because AI was both the tool and the subject of the experiment, its controls and reviews also required human verification. I do not present the repository as entirely hand-coded by me.
+Company OSはCompany自身を作るためだけの実験ではありません。
 
-## What Changed
+実際に別のprivate productであるZOSを対象に、コード監査、E2E runbook作成、通常開発の実装、テスト、Verifierによる確認までを行っています。
 
-- The focus moved from an “AI organization chart” to bounded tasks and verifiable outputs.
-- Full autonomy was replaced by deliberate human approval for higher-impact actions.
-- Client-side safeguards were documented as accident-reduction measures, not security guarantees.
-- Learning was required to produce an adoption decision or concrete change, not only a stored summary.
+この実運用を通して、設計上は正しそうでも実際には不足していた権限境界、停止条件、事実確認、報告形式などを修正してきました。
+
+現在は次の段階として、**外部から受けた小さな仕事も同じCompany flowで処理できるか**を検証しようとしています。
+
+## My Role
+
+私は主に以下を担当しています。
+
+- Companyの目的と原則
+- AIに任せる範囲の判断
+- 高リスク操作の承認
+- 品質基準
+- Claude Codeへの依頼
+- Claude / Verifierの提案を比較した最終判断
+- 実際のProductでCompanyを使い、どこが不足しているかを判断すること
+
+コード、文書、テストの作成にはClaude Codeを大きく利用しています。
+
+## Tools / Concepts
+
+Claude Code / GitHub / Markdown / YAML / shell tests / custom skills / agents / verifier / human-in-the-loop / least-authority thinking
 
 ## What I Learned
 
-- AI autonomy should be based on reversibility, external impact, and evidence—not perceived intelligence.
-- More agents do not automatically create a better organization.
-- Written policy is not the same as technical enforcement.
-- AI-generated controls can fail or overreach and must be tested like product code.
-- Human approval can be an intentional system component rather than an obstacle.
+- Agent数を増やすだけでは組織にはならない
+- AIの能力より、操作の可逆性と外部影響で権限を考える方が実用的
+- policyを書いただけではtechnical enforcementにはならない
+- AIが報告した事実は、可能なら独立に再確認する必要がある
+- 自動化する前に、まず手動経路を数回安定して回す方がよい
+- Human approvalは自動化の失敗ではなく、意図的なsystem componentになり得る
 
-## Status
+## Current Direction
 
-Claude Company OS is a private internal experiment. It demonstrates an approach to AI-native coordination and its limits; it is not a secure autonomous-company platform.
+現在は、Company OSそのものを完成させることではなく、**ZOS開発や外部案件など本物の仕事をCompanyへ入れ、実戦で必要になった部分だけ改善する**方針です。
+
+長期的には、Founderが目的を話すと、GitHub上の状態を引き継ぎながらAIが実装・検証を進め、Founderは重要判断と成果物確認に集中できる状態を目指しています。
+
+これは現時点で完成した自律会社ではなく、その運用モデルを実測しながら作っている途中のexperimentです。
