@@ -20,6 +20,8 @@ mainにはローカルで動くMVPがあり、後続の実験では会話型オ�
 
 **自分の担当:** 問題設定、コンセプト、要件整理、優先順位、UI/UX判断、AIへの指示、実機検証、採否判断。
 
+**Public project snapshot:** [actual structure / implementation state](showcase/zos/README.md)
+
 ---
 
 ### [Claude Company OS — AI-native Operations Experiment](projects/claude-code-company.md)
@@ -31,6 +33,8 @@ GitHubを状態の記録場所にし、AIができる操作と人間が決める
 現在は、自分のプロダクト開発だけでなく、将来的に外部案件も同じ流れで扱えるかを試す段階に進んでいます。
 
 **自分の担当:** 運用原則、権限境界、品質基準、Founder判断、Claude Codeへの依頼、結果のレビューと採否。
+
+**Public project snapshot:** [actual repository structure / operating model](showcase/claude-company/README.md)
 
 ## Earlier Product Experiments
 
@@ -70,4 +74,4 @@ AIの出力をそのまま正解とは扱いません。可能な範囲で一次
 
 ---
 
-This public repository contains written case studies only. Private source code, credentials, customer data, and internal records are not published here.
+This public repository contains curated case studies and public project snapshots only. Private source code, credentials, customer data, and internal records are not published here.
